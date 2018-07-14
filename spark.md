@@ -65,6 +65,8 @@ lines.map(x=>(x,1)).reduceByKey((x,y)=>x+y)
 spark-shell --master local[2] 2表示启动几个线程数，来模拟spark集群
 
 ### 独立的应用程序
+
+```
 SparkConf conf=new SparkConf();
 conf.setMaster("local[4]");
 conf.setAppName("SimpelApp");
@@ -88,7 +90,7 @@ JavaPairRDD counts=words.mapToPair(new PairFunction<String ,String, Integer>(){
     }
 });
 
-
+```
 
 
 
