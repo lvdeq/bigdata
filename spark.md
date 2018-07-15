@@ -97,22 +97,23 @@ JavaPairRDD counts=words.mapToPair(new PairFunction<String ,String, Integer>(){
 2. spark-submit --class WebApp xxx.jar local webapp file:///usr/local/words.txt  //传了3个参数
 
 ### RDD 基础
-1. 不可变的集合
-2. 每个RDD切割成分区，每个分区在不同节点上计算
-3. 创建rdd的两种方式
-  a. 加载外部数据集 ， sc.textFile();
-  b. 或分发一个对象集合
-4. RDD的两个类型
-  transformations:从前有个rdd 产生一个新的rdd ，如filter操作 ，使用```延迟```进行计算
-  actions：基于rdd计算一个结果/返回值给driver/存储文件到系统/ , 如 ceount/first/take
-  
-  rdd.persist() //持久化到内存中，也可以到磁盘上
-
-
+```
+1. 不可变的集合 
+2. 每个RDD切割成分区，每个分区在不同节点上计算 
+3. 创建rdd的两种方式 
+  a. 加载外部数据集 ， sc.textFile(); 
+  b. 或分发一个对象集合 
+4. RDD的两个类型 
+  transformations:从前有个rdd 产生一个新的rdd ，如filter操作 ，使用```延迟```进行计算 
+  actions：基于rdd计算一个结果/返回值给driver/存储文件到系统/ , 如 ceount/first/take 
+  rdd.persist() //持久化到内存中，也可以到磁盘上 
+```
+### spark串行化
+```
 1.spark 默认持久化对象到jvm heap中没有串行化
 2.如果是off-heap或者磁盘存储必须串行化
 3.串行化级别：MEMORY_ONLY ，MEMORY_ONLY_SER，MEMORY_AND_DISK，MEMORY_AND_DISK_SER，DISK_ONLY
-
+```
 
 
 
